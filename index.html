@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MedCenter - Sua Saúde em Primeiro Lugar. Clínica médica com profissionais especializados e tecnologia de ponta.">
+    <title>MedCenter - Sua Saúde em Primeiro Lugar</title>
+    <style>
+        /* Reset e configurações globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c7fb8;
+            --primary-dark: #1d5f8a;
+            --secondary: #7fcdbb;
+            --secondary-dark: #5fb09d;
+            --accent: #edf8b1;
+            --dark: #253237;
+            --light: #f8f9fa;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --gray: #666;
+            --light-gray: #eee;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header e Navegação */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 127, 184, 0.8), rgba(44, 127, 184, 0.9)), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin: 0 auto 30px;
+            max-width: 700px;
+        }
+        
+        /* Seções */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            font-size: 3rem;
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+        
+        .service-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+        
+        /* Médicos */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .doctor-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .doctor-img {
+            height: 250px;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .doctor-img:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .doctor-info p {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .doctor-info .crm {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Agendamento */
+        .appointment {
+            background-color: var(--accent);
+        }
+        
+        .appointment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .appointment-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .appointment-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .appointment-info p {
+            margin-bottom: 10px;
+        }
+        
+        .appointment-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(44, 127, 184, 0.2);
+        }
+        
+        /* Contato */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* Menu Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Alertas */
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+        
+        .alert-error {
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .appointment-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .appointment-info, .appointment-form {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            nav.active {
+                max-height: 400px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 10px 0;
+                width: 100%;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .btn-group .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid, .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>MedCenter</h1>
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#doctors">Médicos</a></li>
+                    <li><a href="#appointment">Agendamento</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li class="btn-group">
+                        <a href="#" class="btn btn-outline">Cadastrar</a>
+                        <a href="#" class="btn">Área do Paciente</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Cuidando da sua saúde com excelência</h2>
+                <p>Na MedCenter, oferecemos atendimento médico de qualidade com profissionais especializados e tecnologia de ponta para garantir seu bem-estar.</p>
+                <a href="#appointment" class="btn">Agendar Consulta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos uma ampla gama de especialidades médicas para atender todas as suas necessidades de saúde.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🩺</div>
+                    <div class="service-content">
+                        <h3>Clínica Geral</h3>
+                        <p>Atendimento médico completo para diagnóstico, tratamento e prevenção de doenças. Nossos clínicos gerais são especialistas em cuidar da sua saúde de forma integral.</p>
+                        <a href="#appointment" class="btn btn-secondary" style="align-self: flex-start;">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">❤️</div>
+                    <div class="service-content">
+                        <h3>Cardiologia</h3>
+                        <p>Cuidados especializados para a saúde do seu coração e sistema cardiovascular. Realizamos exames preventivos e tratamentos para condições cardíacas.</p>
+                        <a href="#appointment" class="btn btn-secondary" style="align-self: flex-start;">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🦷</div>
+                    <div class="service-content">
+                        <h3>Odontologia</h3>
+                        <p>Tratamentos odontológicos completos para manter seu sorriso saudável. Oferecemos desde limpezas até procedimentos estéticos e restauradores.</p>
+                        <a href="#appointment" class="btn btn-secondary" style="align-self: flex-start;">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">👁️</div>
+                    <div class="service-content">
+                        <h3>Oftalmologia</h3>
+                        <p>Exames e tratamentos para cuidar da saúde dos seus olhos e visão. Realizamos consultas de rotina, prescrição de óculos e tratamentos especializados.</p>
+                        <a href="#appointment" class="btn btn-secondary" style="align-self: flex-start;">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🧠</div>
+                    <div class="service-content">
+                        <h3>Neurologia</h3>
+                        <p>Diagnóstico e tratamento de doenças do sistema nervoso. Atendemos pacientes com condições neurológicas diversas com tecnologia de ponta.</p>
+                        <a href="#appointment" class="btn btn-secondary" style="align-self: flex-start;">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🩻</div>
+                    <div class="service-content">
+                        <h3>Exames Laboratoriais</h3>
+                        <p>Realizamos diversos tipos de exames para diagnóstico preciso. Contamos com laboratório moderno e equipe especializada para resultados confiáveis.</p>
+                        <a href="#appointment" class="btn btn-secondary" style="align-self: flex-start;">Agendar Consulta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Médicos -->
+    <section id="doctors">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Nossos Médicos</h2>
+                <p>Contamos com uma equipe de profissionais altamente qualificados e experientes.</p>
+            </div>
+            <div class="doctors-grid">
+                <div class="doctor-card fade-in">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. Carlos Silva</h3>
+                        <p>Clínico Geral</p>
+                        <p class="crm">CRM: 12345/SP</p>
+                    </div>
+                </div>
+                <div class="doctor-card fade-in">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="doctor-info">
+                        <h3>Dra. Ana Santos</h3>
+                        <p>Cardiologista</p>
+                        <p class="crm">CRM: 23456/SP</p>
+                    </div>
+                </div>
+                <div class="doctor-card fade-in">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. Roberto Almeida</h3>
+                        <p>Ortopedista</p>
+                        <p class="crm">CRM: 34567/SP</p>
+                    </div>
+                </div>
+                <div class="doctor-card fade-in">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="doctor-info">
+                        <h3>Dra. Mariana Costa</h3>
+                        <p>Pediatra</p>
+                        <p class="crm">CRM: 45678/SP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendamento -->
+    <section class="appointment" id="appointment">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Agende sua Consulta</h2>
+                <p>Preencha o formulário abaixo e entraremos em contato para confirmar seu agendamento.</p>
+            </div>
+            <div class="appointment-container">
+                <div class="appointment-info fade-in">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 8h às 18h</p>
+                    <p>Sábado: 8h às 12h</p>
+                    <p>Domingo: Fechado</p>
+                    <br>
+                    <h3>Informações Importantes</h3>
+                    <p>• Chegue 15 minutos antes do horário agendado</p>
+                    <p>• Traga documentos pessoais e cartão do convênio (se houver)</p>
+                    <p>• Cancelamentos devem ser feitos com 24h de antecedência</p>
+                </div>
+                <div class="appointment-form fade-in">
+                    <div class="alert alert-success" id="success-message">
+                        Solicitação de agendamento enviada com sucesso! Entraremos em contato em breve para confirmar.
+                    </div>
+                    <div class="alert alert-error" id="error-message">
+                        Por favor, preencha todos os campos obrigatórios.
+                    </div>
+                    <form id="agendamento-form">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="especialidade">Especialidade</label>
+                            <select id="especialidade" class="form-control" required>
+                                <option value="">Selecione uma especialidade</option>
+                                <option value="clinica-geral">Clínica Geral</option>
+                                <option value="cardiologia">Cardiologia</option>
+                                <option value="odontologia">Odontologia</option>
+                                <option value="oftalmologia">Oftalmologia</option>
+                                <option value="neurologia">Neurologia</option>
+                                <option value="pediatria">Pediatria</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="data">Data Preferencial</label>
+                            <input type="date" id="data" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="horario">Horário Preferencial</label>
+                            <select id="horario" class="form-control" required>
+                                <option value="">Selecione um horário</option>
+                                <option value="manha">Manhã (8h-12h)</option>
+                                <option value="tarde">Tarde (13h-18h)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn" id="submit-btn">
+                            <span class="spinner" id="form-spinner"></span>
+                            Solicitar Agendamento
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Entre em Contato</h2>
+                <p>Estamos à disposição para esclarecer suas dúvidas e ouvir suas sugestões.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Endereço</h3>
+                            <p>Rua das Flores, 123 - Centro<br>São Paulo - SP, 01234-567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>(11) 3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>E-mail</h3>
+                            <p>contato@medcenter.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h3>Horário de Funcionamento</h3>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <div class="alert alert-success" id="contact-success-message">
+                        Mensagem enviada com sucesso! Responderemos em breve.
+                    </div>
+                    <div class="alert alert-error" id="contact-error-message">
+                        Por favor, preencha todos os campos obrigatórios.
+                    </div>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="contato-nome">Nome</label>
+                            <input type="text" id="contato-nome" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contato-email">E-mail</label>
+                            <input type="email" id="contato-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contato-assunto">Assunto</label>
+                            <input type="text" id="contato-assunto" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contato-mensagem">Mensagem</label>
+                            <textarea id="contato-mensagem" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="contact-submit-btn">
+                            <span class="spinner" id="contact-spinner"></span>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MedCenter</h3>
+                    <p>Cuidando da sua saúde com excelência e compromisso há mais de 15 anos.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#doctors">Médicos</a></li>
+                        <li><a href="#appointment">Agendamento</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Especialidades</h3>
+                    <ul>
+                        <li><a href="#appointment">Clínica Geral</a></li>
+                        <li><a href="#appointment">Cardiologia</a></li>
+                        <li><a href="#appointment">Odontologia</a></li>
+                        <li><a href="#appointment">Oftalmologia</a></li>
+                        <li><a href="#appointment">Pediatria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>📍 Rua das Flores, 123 - Centro</li>
+                        <li>📞 (11) 3456-7890</li>
+                        <li>✉️ contato@medcenter.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MedCenter. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Validação do formulário de agendamento
+        const agendamentoForm = document.getElementById('agendamento-form');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        const formSpinner = document.getElementById('form-spinner');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        agendamentoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar spinner
+            formSpinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
+            
+            // Simular processamento
+            setTimeout(() => {
+                const nome = document.getElementById('nome').value;
+                const telefone = document.getElementById('telefone').value;
+                const email = document.getElementById('email').value;
+                const especialidade = document.getElementById('especialidade').value;
+                const data = document.getElementById('data').value;
+                const horario = document.getElementById('horario').value;
+                
+                if (nome && telefone && email && especialidade && data && horario) {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    agendamentoForm.reset();
+                } else {
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                }
+                
+                // Esconder spinner
+                formSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+                
+                // Esconder mensagens após 5 segundos
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+        
+        // Validação do formulário de contato
+        const contactForm = document.getElementById('contact-form');
+        const contactSuccessMessage = document.getElementById('contact-success-message');
+        const contactErrorMessage = document.getElementById('contact-error-message');
+        const contactSpinner = document.getElementById('contact-spinner');
+        const contactSubmitBtn = document.getElementById('contact-submit-btn');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar spinner
+            contactSpinner.style.display = 'inline-block';
+            contactSubmitBtn.disabled = true;
+            
+            // Simular processamento
+            setTimeout(() => {
+                const nome = document.getElementById('contato-nome').value;
+                const email = document.getElementById('contato-email').value;
+                const assunto = document.getElementById('contato-assunto').value;
+                const mensagem = document.getElementById('contato-mensagem').value;
+                
+                if (nome && email && assunto && mensagem) {
+                    contactSuccessMessage.style.display = 'block';
+                    contactErrorMessage.style.display = 'none';
+                    contactForm.reset();
+                } else {
+                    contactErrorMessage.style.display = 'block';
+                    contactSuccessMessage.style.display = 'none';
+                }
+                
+                // Esconder spinner
+                contactSpinner.style.display = 'none';
+                contactSubmitBtn.disabled = false;
+                
+                // Esconder mensagens após 5 segundos
+                setTimeout(() => {
+                    contactSuccessMessage.style.display = 'none';
+                    contactErrorMessage.style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+        
+        // Navegação suave para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animação de elementos ao rolar a página
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animação
+        document.querySelectorAll('.service-card, .doctor-card, .section-title, .appointment-info, .appointment-form, .contact-item, .contact-form').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '5px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Configurar data mínima para o campo de data (hoje)
+        const dataInput = document.getElementById('data');
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        dataInput.min = `${yyyy}-${mm}-${dd}`;
+    </script>
+</body>
+</html>
