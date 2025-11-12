@@ -5,7 +5,7 @@
 <div align="center">
   <img src="imagens/medcenter.png" alt="Tela Principal - MedCenter" width="800">
   <br>
-  <sup>Interface principal da plataforma JobConnect</sup>
+  <sup>Interface principal da plataforma MedCenter</sup>
 </div>
 
 ## 📋 Sobre o Projeto
