@@ -6,6 +6,8 @@
   <img src="imagens/medcenter.png" alt="Tela Principal - MedCenter" width="800">
   <br>
   <sup>Interface principal da plataforma MedCenter</sup>
+  <br>
+  https://carloseduardogit.github.io/clinica-medica/
 </div>
 
 ## 📋 Sobre o Projeto
